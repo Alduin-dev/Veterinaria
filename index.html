@@ -729,37 +729,19 @@
                             flex-direction: column;
                             justify-content: center;
                         ">
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding-bottom: 1rem;
-                            ">
-                                <img src="ubication.svg" alt="logo" style="width: 5rem; height: auto;">
-                                <p style="
-                                    margin: 0 0 0 1rem;
-                                    font-size: 1.3rem;
-                                    font-family: sans-serif;
-                                    text-align: center;
-                                ">
-                                    Calle Rivadeneira N°421, San Borja, Lima
-                                </p>
+                            <div
+                            style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+    
+                            <div id="redirectDiv" style="width: 60%; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="display: flex; align-items: center; padding-bottom: 1rem;">
+                                    <img src="phone3.svg" alt="logo" style="width: 3rem; height: auto;">
+                                    <p style="margin: 0 0 0 1rem; font-size: 1rem; font-family: sans-serif; text-align: center; width: 15rem;">
+                                        (51) 976412848
+                                    </p>
+                                </div>
                             </div>
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding-bottom: 1rem;
-                            ">
-                                <img src="phone3.svg" alt="logo" style="width: 3.1rem; height: auto;">
-                                <p style="
-                                    margin: 0 0 0 1rem;
-                                    font-size: 1.3rem;
-                                    font-family: sans-serif;
-                                    text-align: center;
-                                    width: 15rem;
-                                ">
-                                    (51) 976412848
-                                </p>
-                            </div>
+    
+                        </div>
                         </div>
 
                     </div>
@@ -943,42 +925,12 @@
                         ">s/370</p>
                     </div>
                     <div
-                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; cursor: pointer;">
 
-                        <div style="
-                            width: 60%;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                        ">
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding-bottom: 1rem;
-                            ">
-                                <img src="ubication.svg" alt="logo" style="width: 5rem; height: auto;">
-                                <p style="
-                                    margin: 0 0 0 1rem;
-                                    font-size: 1.3rem;
-                                    font-family: sans-serif;
-                                    text-align: center;
-                                ">
-                                    Calle Rivadeneira N°421, San Borja, Lima
-                                </p>
-                            </div>
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding-bottom: 1rem;
-                            ">
-                                <img src="phone3.svg" alt="logo" style="width: 3.1rem; height: auto;">
-                                <p style="
-                                    margin: 0 0 0 1rem;
-                                    font-size: 1.3rem;
-                                    font-family: sans-serif;
-                                    text-align: center;
-                                    width: 15rem;
-                                ">
+                        <div id="redirectDiv" style="width: 60%; display: flex; flex-direction: column; justify-content: center;">
+                            <div style="display: flex; align-items: center; padding-bottom: 1rem;">
+                                <img src="phone3.svg" alt="logo" style="width: 3rem; height: auto;">
+                                <p style="margin: 0 0 0 1rem; font-size: 1rem; font-family: sans-serif; text-align: center; width: 15rem;">
                                     (51) 976412848
                                 </p>
                             </div>
@@ -1173,37 +1125,19 @@
                             flex-direction: column;
                             justify-content: center;
                         ">
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding-bottom: 1rem;
-                            ">
-                                <img src="ubication.svg" alt="logo" style="width: 5rem; height: auto;">
-                                <p style="
-                                    margin: 0 0 0 1rem;
-                                    font-size: 1.3rem;
-                                    font-family: sans-serif;
-                                    text-align: center;
-                                ">
-                                    Calle Rivadeneira N°421, San Borja, Lima
-                                </p>
+                            <div
+                            style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+    
+                            <div id="redirectDiv" style="width: 60%; display: flex; flex-direction: column; justify-content: center;">
+                                <div style="display: flex; align-items: center; padding-bottom: 1rem;">
+                                    <img src="phone3.svg" alt="logo" style="width: 3rem; height: auto;">
+                                    <p style="margin: 0 0 0 1rem; font-size: 1rem; font-family: sans-serif; text-align: center; width: 15rem;">
+                                        (51) 976412848
+                                    </p>
+                                </div>
                             </div>
-                            <div style="
-                                display: flex;
-                                align-items: center;
-                                padding-bottom: 1rem;
-                            ">
-                                <img src="phone3.svg" alt="logo" style="width: 3.1rem; height: auto;">
-                                <p style="
-                                    margin: 0 0 0 1rem;
-                                    font-size: 1.3rem;
-                                    font-family: sans-serif;
-                                    text-align: center;
-                                    width: 15rem;
-                                ">
-                                    (51) 976412848
-                                </p>
-                            </div>
+    
+                        </div>
                         </div>
 
                     </div>
@@ -1233,6 +1167,10 @@
     </div>
     <script>
         let currentIndex = 0;
+
+        document.getElementById('redirectDiv').onclick = function() {
+            window.location.href = 'https://wa.me/51980211516';
+        }
 
         function showSlide(index) {
             const slides = document.querySelector('.carousel-inner');
