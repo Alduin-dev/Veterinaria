@@ -1,102 +1,1225 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carousel</title>
+    <title>UniversoCan</title>
+    <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
     <style>
+        @import url('https://fonts.cdnfonts.com/css/roboto');
+
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
+
         body {
             font-family: Arial, sans-serif;
-        }
-        .carousel {
-            position: relative;
-            width: 735px;
-            height: 600px;
-            max-width: 940px;
-            margin: auto;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-        .carousel-images {
+            background-color: #a2ddeb;
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .carousel-images img {
+
+        .carousel {
             width: 100%;
-            border-radius: 10px;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
-        .carousel-controls {
+
+        .carousel-inner {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            flex: none;
+        }
+
+        .carousel-control {
             position: absolute;
             top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-        .carousel-controls button {
-            background: rgba(255, 255, 255, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            background-color: rgba(255, 255, 255, 0.783);
+            color: rgb(0, 0, 0);
             border: none;
-            width: 40px;
-            height: 40px;
-            margin: 10px;
-            padding: 0;
+            font-size: 1.5rem;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .box_crayon {
+            width: 30rem;
+            overflow: hidden;
+            position: absolute;
+            top: -2rem;
+            right: 0;
+            z-index: 0;
+        }
+
+        .style_crayon {
+            width: 40rem;
+            transform: rotate(180deg);
+        }
+
+        .box_mark {
+            width: 50rem;
+            height: 45rem;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .box_image_mark {
+            background-color: #7a3db0;
+            overflow: hidden;
+            width: 55rem;
+            height: 50rem;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: -11rem;
+            left: -6rem;
+            z-index: 0;
+            transform: rotate(200deg);
+        }
+
+        .box_circle_mark {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(160deg);
+        }
+
+        .style_mark {
+            width: 7rem;
+        }
+
+        .style_title_mark {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .style_Tile {
+            width: 29rem;
+            font-size: 4.5rem;
+            color: white;
+            font-family: sans-serif;
+            font-weight: 700;
+        }
+
+        .txt_mark {
+            width: 15rem;
+            font-size: 2rem;
+            text-align: justify;
+            font-family: 'roboto';
+            font-weight: 700;
+        }
+
+        .box_image_vet {
+            width: 60rem;
+            height: 36rem;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0rem;
+            left: -5rem;
+            z-index: 0;
+        }
+
+        .box_circle_vet {
+            width: 45rem;
+            height: 45rem;
+            overflow: hidden;
+            bottom: 0;
+            border-radius: 100%;
+            left: -10rem;
+            z-index: 0;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+        }
+
+        .style_vet {
+            background-position: center bottom;
+            width: 50rem;
+        }
+
+        .bar_purple {
+            display: flex;
+            height: 6rem;
+            padding-left: 1rem;
+            align-items: center;
+            border-radius: 10rem 0 0 10rem;
+            background-color: #7a3db0;
+        }
+
+        .style_phone {
+            width: 4rem;
+        }
+
+        .style_qr {
+            width: 20rem;
+        }
+
+        .box_qr {
+            width: 60rem;
+            padding-bottom: 5rem;
+            overflow: hidden;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 0;
+        }
+
+        .border_qr {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            border-radius: 2rem;
+            border: 0.5rem solid #7a3db0;
+            padding: 1rem;
+            background-color: white;
+        }
+
+        .box_image_qr {
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 20rem;
+            padding-bottom: 2rem;
+            padding-left: 20rem;
+        }
+
+        .text_descrip {
+            width: 25rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            text-align: center;
+            font-size: 2.5rem;
+            color: #7a3db0;
+            font-weight: 700;
+        }
+
+        .text_contact {
+            color: white;
+            padding-left: 1rem;
+            font-weight: 700;
+            font-size: 3rem;
+        }
+
+        .txt_pruple {
+            width: 8rem;
+            font-size: 1rem;
+            color: #7a3db0;
+            text-align: justify;
+            font-family: sans-serif;
+            font-weight: 800;
+        }
+
+        .text_contact2 {
+            color: #203462;
+            padding-left: 1rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .style_TMark {
+            padding-bottom: 6rem;
+        }
+
+        .row {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .row-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            width: 60rem;
+        }
+
+        .vet-info {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            width: 60rem;
+        }
+
+        .vet-box {
+            width: 20rem;
+            height: 40rem;
+            border-radius: 13rem;
+            background-color: red;
+            overflow: hidden;
+        }
+
+        .style_vet2 {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-box {
+            background-color: white;
+            border-radius: 10rem;
+            position: absolute;
+            width: 20rem;
+            display: flex;
+            bottom: 6rem;
+            right: -50rem;
+            flex-direction: column;
+            transform: translateX(-50%);
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .style_phone2 {
+            width: 1.2rem;
+            margin-left: 3.5rem;
+            margin-right: 1rem;
+        }
+
+        .box_phone2 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .text_number {
+            font-size: 1.3rem;
+        }
+
+        .cards {
+            position: relative;
+            background-color: #8A56AC;
+            border-radius: 20px;
+            padding: 20px;
+            width: 30rem;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background-color: #00C1A5;
             border-radius: 50%;
-            transition: background 0.3s;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
         }
-        .carousel-controls button:hover {
-            background: rgba(255, 255, 255, 1);
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+        }
+
+        .content p {
+            margin: 5px 0;
+        }
+
+        .txt_descrip2 {
+            font-size: 3rem;
+            width: 40rem;
+            color: #203462;
+        }
+
+        .circle {
+            width: 18rem;
+            height: 18rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 15px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle_vet {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .list-container {
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .list-item svg {
+            width: 8px;
+            height: 8px;
+            margin-right: 10px;
+            fill: #01d09e;
         }
     </style>
 </head>
+
 <body>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="container">
+                <div class="box_crayon">
+                    <img src="/assets/crayon.png" alt="line" class="style_crayon">
+                </div>
+                <div class="box_mark">
+                    <div class="box_image_mark">
+                        <div class="box_circle_mark">
+                            <div class="style_TMark">
+                                <div class="style_title_mark">
+                                    <img src="/assets/logo.png" alt="logo" class="style_mark">
+                                    <p class="txt_mark">VETERINARIA VIDA ANIMAL</p>
+                                </div>
+                                <div class="style_Tile">
+                                    <p>Seguro para mascotas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box_image_vet">
+                    <div class="box_circle_vet">
+                        <img src="/assets/vet.webp" alt="vet" class="style_vet">
+                    </div>
+                </div>
+                <div class="box_qr">
+                    <div class="box_image_qr">
+                        <p class="text_descrip">¡Escanea el código para conocer todos nuestros servicios!</p>
+                        <div class="border_qr">
+                            <img src="/assets/qr.png" alt="vet" class="style_qr">
+                        </div>
+                    </div>
+                    <div class="bar_purple">
+                        <img src="/assets/phone.svg" alt="vet" class="style_phone">
+                        <p class="text_contact">Agenda una cita al (51) 976412848</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="style_title_mark">
+                        <img src="/assets/logo.png" alt="logo" class="style_mark">
+                        <p class="txt_pruple">VETERINARIA VIDA ANIMAL</p>
+                    </div>
+                    <div>
+                        <p class="txt_descrip2">Conoce nuestros packs para tu mascota</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="vet-info">
+                        <div class="vet-box">
+                            <img src="/assets/vet2.webp" alt="vet" class="style_vet2">
+                            <div class="contact-box">
+                                <p class="text_contact2">Agenda una cita al:</p>
+                                <div class="box_phone2">
+                                    <img src="/assets/phone2.svg" alt="vet" class="style_phone2">
+                                    <p class="text_number">(51) 976412848</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-content">
+                        <div style="padding-bottom: 4rem; padding-top: 1rem;">
 
-<div class="carousel">
-    <div class="carousel-images">
-        <img src="https://img001.prntscr.com/file/img001/64GNAUdDS_eRA8CJWBNo8g.png" alt="Image 1">
-        <img src="https://img001.prntscr.com/file/img001/pbi9Rp8yTEmStyysuZNQig.png" alt="Image 2">
-        <img src="https://img001.prntscr.com/file/img001/vsYxr2sDQauYnME8es2FCA.png" alt="Image 3">
-        <img src="https://img001.prntscr.com/file/img001/Eu-G181GT_Gyax_F9YkruA.png" alt="Image 4">
-        <img src="https://img001.prntscr.com/file/img001/Vd7KQ0FtQySLGxiw16rP-g.png" alt="Image 5">
-        <img src="https://img001.prntscr.com/file/img001/2NBD7GR8RuOASBEUB3E7pw.png" alt="Image 6">
+                            <div class="cards">
+                                <div class="number">01</div>
+                                <div class="content">
+                                    <p>PACK ANIMAL LOVER</p>
+                                    <p>- Consultas generales y de emergencias ilimitadas</p>
+                                    <p>- Teleconsultas ilimitadas</p>
+                                    <p>- Descuentos en servicios</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="padding-bottom: 4rem;">
+
+                            <div class="cards">
+                                <div class="number">02</div>
+                                <div class="content">
+                                    <p>PACK ANIMAL ESTELAR</p>
+                                    <p>- 4 desparasitaciones</p>
+                                    <p>- Consultas generales y de emergencias ilimitadas</p>
+                                    <p>- Teleconsultas ilimitadas</p>
+                                    <p>- Descuentos en servicios</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="padding-bottom: 4rem;">
+
+                            <div class="cards">
+                                <div class="number">03</div>
+                                <div class="content">
+                                    <p>PACK ANIMAL ESTELAR</p>
+                                    <p>- 4 desparasitaciones</p>
+                                    <p>- Consultas generales y de emergencias ilimitadas</p>
+                                    <p>- Teleconsultas ilimitadas</p>
+                                    <p>- Descuentos en servicios</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                ">
+                    <div class="style_title_mark">
+                        <img src="/assets/logo.png" alt="logo" class="style_mark">
+                        <p class="txt_pruple">VETERINARIA VIDA ANIMAL</p>
+                    </div>
+                    <div style="width: 29rem;">
+                        <div style="
+                                width: 100%;
+                                background-color: #7a3db0;
+                                padding: 0.2rem;
+                                border-radius: 4rem;
+                            ">
+                            <p style="
+                                font-size: 2.5rem;
+                                text-align: center;
+                                font-weight: 900;
+                                color: white;
+                            ">PACK ANIMAL LOVER</p>
+                        </div>
+
+                    </div>
+                    <div style="
+                        display: flex;
+                        width: 100%;
+                        height: 35rem;
+                        justify-content: center;
+                        align-items: center;
+                        padding-top: 2rem;
+                    ">
+                        <div style="
+                            width: 80%;
+                            height: 100%;
+                            display: flex;
+                        ">
+
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+
+                                <div class="circle">
+                                    <img src="/assets/vet3.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Desparacitación
+                                        </p>
+                                    </div>
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Internamiento</p>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            ">
+                                <div class="circle">
+                                    <img src="/assets/vet4.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Consulta General
+                                        </p>
+                                    </div>
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Dermatología</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+                                <div class="circle">
+                                    <img src="/assets/vet5.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Exámenes de
+                                            Laboratorio</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div style="width: 100%; position: absolute; height: 2rem; background-color: #00ffe0; bottom: 0;"></div>
+                <div
+                    style="width: 78%; position: absolute; height: 20rem; bottom: 2rem; display: flex; justify-content: center; align-items: center;">
+                    <div
+                        style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="
+                            width: 55%;
+                        ">
+                            <p style="
+                                text-align: center;
+                                font-size: 1.3rem;
+                                font-family: sans-serif;
+                            ">
+                                *Pack incluye servicios y atenciones con descuentos hasta del 30%.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; position: relative;">
+                        <img src="/assets/circlestar.svg" alt="logo" style="width: 12rem;">
+                        <p style="
+                            position: absolute;
+                            font-size: 3rem;
+                            font-weight: bold;
+                            color: black;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        ">s/280</p>
+                    </div>
+                    <div
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+
+                        <div style="
+                            width: 60%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        ">
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 1rem;
+                            ">
+                                <img src="/assets/ubication.svg" alt="logo" style="width: 5rem; height: auto;">
+                                <p style="
+                                    margin: 0 0 0 1rem;
+                                    font-size: 1.3rem;
+                                    font-family: sans-serif;
+                                    text-align: center;
+                                ">
+                                    Calle Rivadeneira N°421, San Borja, Lima
+                                </p>
+                            </div>
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 1rem;
+                            ">
+                                <img src="/assets/phone3.svg" alt="logo" style="width: 3.1rem; height: auto;">
+                                <p style="
+                                    margin: 0 0 0 1rem;
+                                    font-size: 1.3rem;
+                                    font-family: sans-serif;
+                                    text-align: center;
+                                    width: 15rem;
+                                ">
+                                    (51) 976412848
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="
+                    width: 100%;
+                    height: 40rem;
+                    overflow: hidden;
+                    position: absolute;
+                    bottom: 0;
+                    display: flex;
+                    justify-content: center;
+                    z-index: -2;
+                ">
+                    <div style="
+                        width: 100%;
+                        height: 100rem;
+                        background-color: #ffffff;
+                        border-radius: 50%;    
+                    ">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                ">
+                    <div class="style_title_mark">
+                        <img src="/assets/logo.png" alt="logo" class="style_mark">
+                        <p class="txt_pruple">VETERINARIA VIDA ANIMAL</p>
+                    </div>
+                    <div style="width: 29rem;">
+                        <div style="
+                                width: 100%;
+                                background-color: #7a3db0;
+                                padding: 0.2rem;
+                                border-radius: 4rem;
+                            ">
+                            <p style="
+                                font-size: 2.5rem;
+                                text-align: center;
+                                font-weight: 900;
+                                color: white;
+                            ">PACK ANIMAL LOVER</p>
+                        </div>
+
+                    </div>
+                    <div style="
+                        display: flex;
+                        width: 100%;
+                        height: 35rem;
+                        justify-content: center;
+                        align-items: center;
+                        padding-top: 2rem;
+                    ">
+                        <div style="
+                            width: 80%;
+                            height: 100%;
+                            display: flex;
+                        ">
+
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+
+                                <div class="circle">
+                                    <img src="/assets/vet3.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Desparacitación
+                                        </p>
+                                    </div>
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Internamiento</p>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            ">
+                                <div class="circle">
+                                    <img src="/assets/vet4.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Consulta General
+                                        </p>
+                                    </div>
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Dermatología</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+                                <div class="circle">
+                                    <img src="/assets/vet5.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Exámenes de
+                                            Laboratorio</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div style="width: 100%; position: absolute; height: 2rem; background-color: #00ffe0; bottom: 0;"></div>
+                <div
+                    style="width: 78%; position: absolute; height: 20rem; bottom: 2rem; display: flex; justify-content: center; align-items: center;">
+                    <div
+                        style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="
+                            width: 55%;
+                        ">
+                            <p style="
+                                text-align: center;
+                                font-size: 1.3rem;
+                                font-family: sans-serif;
+                            ">
+                                *Pack incluye servicios y atenciones con descuentos hasta del 30%.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; position: relative;">
+                        <img src="/assets/circlestar.svg" alt="logo" style="width: 12rem;">
+                        <p style="
+                            position: absolute;
+                            font-size: 3rem;
+                            font-weight: bold;
+                            color: black;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        ">s/370</p>
+                    </div>
+                    <div
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+
+                        <div style="
+                            width: 60%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        ">
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 1rem;
+                            ">
+                                <img src="/assets/ubication.svg" alt="logo" style="width: 5rem; height: auto;">
+                                <p style="
+                                    margin: 0 0 0 1rem;
+                                    font-size: 1.3rem;
+                                    font-family: sans-serif;
+                                    text-align: center;
+                                ">
+                                    Calle Rivadeneira N°421, San Borja, Lima
+                                </p>
+                            </div>
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 1rem;
+                            ">
+                                <img src="/assets/phone3.svg" alt="logo" style="width: 3.1rem; height: auto;">
+                                <p style="
+                                    margin: 0 0 0 1rem;
+                                    font-size: 1.3rem;
+                                    font-family: sans-serif;
+                                    text-align: center;
+                                    width: 15rem;
+                                ">
+                                    (51) 976412848
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="
+                    width: 100%;
+                    height: 40rem;
+                    overflow: hidden;
+                    position: absolute;
+                    bottom: 0;
+                    display: flex;
+                    justify-content: center;
+                    z-index: -2;
+                ">
+                    <div style="
+                        width: 100%;
+                        height: 100rem;
+                        background-color: #ffffff;
+                        border-radius: 50%;    
+                    ">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                ">
+                    <div class="style_title_mark">
+                        <img src="/assets/logo.png" alt="logo" class="style_mark">
+                        <p class="txt_pruple">VETERINARIA VIDA ANIMAL</p>
+                    </div>
+                    <div style="width: 29rem;">
+                        <div style="
+                                width: 100%;
+                                background-color: #7a3db0;
+                                padding: 0.2rem;
+                                border-radius: 4rem;
+                            ">
+                            <p style="
+                                font-size: 2.5rem;
+                                text-align: center;
+                                font-weight: 900;
+                                color: white;
+                            ">PACK ANIMAL LOVER</p>
+                        </div>
+
+                    </div>
+                    <div style="
+                        display: flex;
+                        width: 100%;
+                        height: 35rem;
+                        justify-content: center;
+                        align-items: center;
+                        padding-top: 2rem;
+                    ">
+                        <div style="
+                            width: 80%;
+                            height: 100%;
+                            display: flex;
+                        ">
+
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+
+                                <div class="circle">
+                                    <img src="/assets/vet3.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Desparacitación
+                                        </p>
+                                    </div>
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Internamiento</p>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            ">
+                                <div class="circle">
+                                    <img src="/assets/vet4.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Consulta General
+                                        </p>
+                                    </div>
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Dermatología</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div style="
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            ">
+                                <div class="circle">
+                                    <img src="/assets/vet5.webp" alt="logo" class="circle_vet">
+                                </div>
+                                <div class="list-container">
+                                    <div class="list-item">
+                                        <svg viewBox="0 0 100 100">
+                                            <circle cx="50" cy="50" r="50" />
+                                        </svg>
+                                        <p style="font-size: 2rem; font-weight: 800; color: #7a3db0;">Exámenes de
+                                            Laboratorio</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div style="width: 100%; position: absolute; height: 2rem; background-color: #00ffe0; bottom: 0;"></div>
+                <div
+                    style="width: 78%; position: absolute; height: 20rem; bottom: 2rem; display: flex; justify-content: center; align-items: center;">
+                    <div
+                        style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                        <div style="
+                            width: 55%;
+                        ">
+                            <p style="
+                                text-align: center;
+                                font-size: 1.3rem;
+                                font-family: sans-serif;
+                            ">
+                                *Pack incluye servicios y atenciones con descuentos hasta del 30%.
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; position: relative;">
+                        <img src="/assets/circlestar.svg" alt="logo" style="width: 12rem;">
+                        <p style="
+                            position: absolute;
+                            font-size: 3rem;
+                            font-weight: bold;
+                            color: black;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        ">s/420</p>
+                    </div>
+                    <div
+                        style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+
+                        <div style="
+                            width: 60%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                        ">
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 1rem;
+                            ">
+                                <img src="/assets/ubication.svg" alt="logo" style="width: 5rem; height: auto;">
+                                <p style="
+                                    margin: 0 0 0 1rem;
+                                    font-size: 1.3rem;
+                                    font-family: sans-serif;
+                                    text-align: center;
+                                ">
+                                    Calle Rivadeneira N°421, San Borja, Lima
+                                </p>
+                            </div>
+                            <div style="
+                                display: flex;
+                                align-items: center;
+                                padding-bottom: 1rem;
+                            ">
+                                <img src="/assets/phone3.svg" alt="logo" style="width: 3.1rem; height: auto;">
+                                <p style="
+                                    margin: 0 0 0 1rem;
+                                    font-size: 1.3rem;
+                                    font-family: sans-serif;
+                                    text-align: center;
+                                    width: 15rem;
+                                ">
+                                    (51) 976412848
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="
+                    width: 100%;
+                    height: 40rem;
+                    overflow: hidden;
+                    position: absolute;
+                    bottom: 0;
+                    display: flex;
+                    justify-content: center;
+                    z-index: -2;
+                ">
+                    <div style="
+                        width: 100%;
+                        height: 100rem;
+                        background-color: #ffffff;
+                        border-radius: 50%;    
+                    ">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div>container 6</div>
+            </div>
+        </div>
+        <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
     </div>
-    <div class="carousel-controls">
-        <button class="prev">&lt;</button>
-        <button class="next">&gt;</button>
-    </div>
-</div>
+    <script>
+        let currentIndex = 0;
 
-<script>
-    const carousel = document.querySelector('.carousel-images');
-    const images = document.querySelectorAll('.carousel-images img');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-    let currentIndex = 0;
+        function showSlide(index) {
+            const slides = document.querySelector('.carousel-inner');
+            const totalSlides = document.querySelectorAll('.container').length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            slides.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+        }
 
-    function showImage(index) {
-        const offset = -index * 100;
-        carousel.style.transform = `translateX(${offset}%)`;
-    }
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
 
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-        showImage(currentIndex);
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-        showImage(currentIndex);
-    });
-
-    showImage(currentIndex);
-</script>
-
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+    </script>
 </body>
+
 </html>
